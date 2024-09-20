@@ -1,24 +1,12 @@
-list_add(list_node* head, int data) {
-	static list_node newNode;
-	newNode -> data = data;
-	newNode -> next = *head;
-	*head = &newNode;
+void list_add(struct list_element *list_head, struct list_element *new_element){
+	new_element -> next = list_head -> next;
+	list_head -> next = new_element;
 }
 
-list_remove(list_node *head, int data) {
-	list_node *current = *head;
-	list_node *previous = NULL:
-	while(current != NULL) {
-		if(current -> data == data) {
-			if(previous == NULL) {
-				*head = current -> next;
-			} else {
-				previous -> next = current -> next;
-			}
-			return 1;
-		}
-		previous = current;
-		current = current -> next;
+void list_remove(struct list_element *element) {
+	struct list_element *prev = head;
+	while(prev -> next != element) {
+		prev = prev -> next;
 	}
-	return 0;
+	prev -> next = element -> next;
 }
