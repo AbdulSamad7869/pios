@@ -1,10 +1,19 @@
 
 
+char glbl[128];
 
 void kernel_main() {
-    // adding a comment
-    // another comment
-    // another comment to test out
-    while(1){
+   
+    extern int __bss_start, __bss_end;    
+    char *bssstart, *bssend;
+
+    bssstart = &__bss_start;
+    bssend = &__bss_end;
+
+    for(char *ptr = bssstart; ptr < bssend; ptr++) {
+	    *ptr = 0x0;
     }
+      
+    while(1){
+   }
 }
